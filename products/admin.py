@@ -14,14 +14,14 @@ class ProductAdmin(admin.ModelAdmin):
         'image',
     )
 
+    orderning = ('sku',)
+
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
         'name',
     )
-
-    orderning = ('sku',)
 
 
 admin.site.register(Product, ProductAdmin)
