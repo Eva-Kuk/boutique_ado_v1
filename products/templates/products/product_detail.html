@@ -1,3 +1,32 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@Eva-Kuk 
+Code-Institute-Solutions
+/
+boutique_ado_v1
+forked from ckz8780/boutique_ado_v1
+1
+269
+Code
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+boutique_ado_v1/products/templates/products/product_detail.html
+@ckz8780
+ckz8780 Added sorting and product counts to product page
+Latest commit ec933ec on 4 Feb 2020
+ History
+ 1 contributor
+50 lines (48 sloc)  2.06 KB
+  
 {% extends "base.html" %}
 {% load static %}
 
@@ -20,7 +49,7 @@
                             <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                         </a>
                         {% else %}
-                        <a href="{{ product.image.url }}" target="_blank">
+                        <a href="">
                             <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                         </a>
                     {% endif %}
@@ -30,6 +59,13 @@
                 <div class="product-details-container mb-5 mt-md-5">
                     <p class="mb-0">{{ product.name }}</p>
                     <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
+                    {% if product.category %}
+                    <p class="small mt-1 mb-0">
+                        <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
+                            <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
+                        </a>
+                    </p>
+                    {% endif %}
                     {% if product.rating %}
                         <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
                     {% else %}
@@ -41,3 +77,16 @@
         </div>
     </div>
 {% endblock %}
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete
