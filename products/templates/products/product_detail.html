@@ -1,31 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@Eva-Kuk 
-Code-Institute-Solutions
-/
-boutique_ado_v1
-forked from ckz8780/boutique_ado_v1
-1
-269
-Code
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-boutique_ado_v1/products/templates/products/product_detail.html
-@ckz8780
-ckz8780 Added sorting and product counts to product page
-Latest commit ec933ec on 4 Feb 2020
- History
- 1 contributor
-50 lines (48 sloc)  2.06 KB
   
 {% extends "base.html" %}
 {% load static %}
@@ -88,16 +60,35 @@ Latest commit ec933ec on 4 Feb 2020
                                     </select>
                                 </div>
                             {% endif %}
-                            <div class="col{% if s %}-12 mt-2{% endif %}">
+                            <div class="col-12">
                                 <p class="mt-3"><strong>Quantity:</strong></p>
                                 <div class="form-group w-50">
                                     <div class="input-group">
-                                        <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                                        <div class="input-group-prepend">
+                                            <button class="decrement-qty btn btn-black rounded-0" 
+                                                data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
+                                                <span class="icon">
+                                                    <i class="fas fa-minus"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <input class="form-control qty_input" type="number"
+                                            name="quantity" value="1" min="1" max="99"
+                                            data-item_id="{{ product.id }}"
+                                            id="id_qty_{{ product.id }}">
+                                        <div class="input-group-append">
+                                            <button class="increment-qty btn btn-black rounded-0"
+                                                data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
+                                                <span class="icon">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-12">
+                            <div class="col{% if s %}-12 mt-2{% endif %}">
                                 <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
                                     <span class="icon">
                                         <i class="fas fa-chevron-left"></i>
@@ -115,16 +106,8 @@ Latest commit ec933ec on 4 Feb 2020
         </div>
     </div>
 {% endblock %}
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'products/includes/quantity_input_script.html' %}
+{% endblock %}
