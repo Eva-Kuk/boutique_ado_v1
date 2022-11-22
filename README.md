@@ -1,7 +1,7 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 ## Boutique Ado project
- A live demo can be found here: https://evakuk-boutique-ado.herokuapp.com/
+ A live demo can be found here: https://boutique-ado-rwoi.onrender.com
 
 HOME PAGE
 
